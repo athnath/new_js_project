@@ -93,11 +93,9 @@
    
 <tr><td><button class="button" onclick="getDate(this);">ADD</button></td></tr>
 
-
- 
  <tr><td><button class="button" onclick="myFunctionn();">RESET</button></td></tr>
  
-  <tr><td><button class="button" >	Sort by date</button></td></tr>
+<tr><td><button class="button" >	Sort by date</button></td></tr>
   
     
      </form>
@@ -154,20 +152,6 @@
 
 
 
-
-<script>
-function getDate(){
-var todaydate = new Date();
-var day = todaydate.getDate();
-var month = todaydate.getMonth() + 1;
-var year = todaydate.getFullYear();
-var datestring = day + "/" + month + "/" + year;
-document.getElementById("frmDate").value = datestring; //don't need ()
-}
-
-document.getElementById("frmDate").onload = getDate(); 
-
-</script>
 
 
 
@@ -268,6 +252,24 @@ function oddNum(number) {
 	
 	
 </script>
+
+
+
+<script>
+function getDate(){
+var todaydate = new Date();
+var day = todaydate.getDate();
+var month = todaydate.getMonth() + 1;
+var year = todaydate.getFullYear();
+var datestring = day + "/" + month + "/" + year;
+
+}
+
+
+</script>
+
+
+
 
 <script>
 function myFunctionn() {
