@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 
 
 .button {
-    background-color: #4CAF50; 
+    background-color:#B22222;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -18,134 +19,69 @@
 }
 
 
-
-.low{
+#res{
     
-	 background:red;
+    overflow: hidden;
+	 float: right;
+	
+}
 
+#sort{
+   
+
+    overflow: hidden;
+	 float: ;
 
 }
 
 
-.circle {
-  height: 100px;
-  width: 100px;
-  background-color: powderblue;
+
+#shape  {
+  height:200px;
+  width: 200px;
+  background-color: lightblue;
   border-radius: 50%;
+  float: right;
+  
 }
 
-.triangle-up {
+#shape1 {
 	width: 0;
 	height: 0;
-	border-left: 50px solid transparent ;
-	border-right: 50px solid transparent;
-	border-bottom: 50px solid powderblue;
-}
-
-.card {
-    background-color:0;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    height: 50px;
-	width: 15%;
-    border-radius: 5px;
-}
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.container {
-    padding: 2px 16px;
-}
-
-.dot {
-    height: 15px;
-    width: 15px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-
-     
- 
-
+	border-left: 200px solid transparent ;
+	border-right: 200px solid transparent;
+	border-bottom: 150px solid powderblue;
+	float: right;
+} 
 
 </style>
 <body>
-
+<form id="form" method="POST" action="" onsubmit="return checkDate(this);">
+    <label><h2>Enter the Date:</h2></label>
+    <input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
+<input type="submit" value="Validate" id="form">
+   </form>
+ <button class="button"  value="add"   onfocus="change()"  onclick="myFunction1();myFunction2();myFunction();"/>ADD</button>
+   <div id="res"><tr><td><button class="button" id="reset" onclick="resett();">RESET</button></td></tr></div>
+    <div id="sort"><tr><td><button class="button" id="sort">SORT BY DATE</button></td></tr></div>
+  
+  
+  <p><span id='display'></span></p>
+ <div id="numbers"> </div>
 
  
- <form  method="POST" id="form" name="form" onsubmit="return checkDate(this);">
-
-
- <span>Enter the date:</span><br/>
-
-  <input  type="text" name="date" placeholder="dd/mm/yyyy" onchange="ChangeLabel(this);">
-
-
-
-  
-  <br/><input type="submit" value="Validate">
-
-   
-   
-<tr><td><button class="button" onclick="getDate(this);">ADD</button></td></tr>
-
- <tr><td><button class="button" onclick="myFunctionn();">RESET</button></td></tr>
- 
-<tr><td><button class="button" >	Sort by date</button></td></tr>
-  
-    
-     </form>
-
-  
-  
-     
-  
- <tr><td> <button onclick="asc()">Date asc</button></tr></td>
-<tr><td><button onclick="desc()">Date Dsc</button></tr></td>
-
-  
-  <div class="row">
-  <div class="column" style="background-color:#aaa;">
-    
-  </div>
-
  
 <center>
-<p>
-<div class="circle"></div>
-</p>
-<div class="triangle-up"></div>
+
+<div id="shape"  class="circle" onload="myFunction1();"></div>
+
+<div id="shape1" class="triangle-up" onload="myFunction2();"></div>
 
 </center>
-<p>
-<tr><div class="card" id="lblText">
-<div id="dot" style="text-align:right">
- <span class="dot"></span>
- </div>
-</div>
-</tr>
-
-
-</p>
  
-  <img  style="width:100%">
-  
-  <div class="container">
-   
-  </div>
-  </p>
-  
-  
-  
-</div>
-
-
-
+ 
 </head>
+
 </body>
 </html>
 
@@ -153,21 +89,14 @@
 
 
 
-
-
-	  
-	  
 <script>
-
-
-
 
 
 
  function checkDate(form)
 
   {
-
+     document.getElementById("user_input").value;
     
 
     re = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
@@ -236,16 +165,7 @@
 
   }
 
-  var i=1;
-function oddNum(number) {
-    for ( i = 1; i <=31; i++) {
-        if (i % 2 != 0) {
-            document.write(i).innerHTML=aa.getDate();
-        }
-    }
-	
-	
-	
+ 
 }
 
 
@@ -258,55 +178,112 @@ function oddNum(number) {
 
 
 
+
+
+
 <script>
-function getDate(){
-var todaydate = new Date();
+function showInput() {
+        document.getElementById('display').innerHTML = document.getElementById("user_input").value;
+    }
+
+
+
+</script>
+
+
+<script>
+function myFunction() {
+  /*  var todaydate = new Date();
 var day = todaydate.getDate();
 var month = todaydate.getMonth() + 1;
 var year = todaydate.getFullYear();
 var datestring = day + "/" + month + "/" + year;
+*/
+var w=document.getElementById("user_input").value;
+a=document.getElementById("user_input");
+	x = document.createElement("INPUT");
+    x.setAttribute("type", "text");
+	x.setAttribute("value",w);
+   
+document.body.appendChild(x);
+
+   
 
 }
-
-
 </script>
-
-
-
 
 <script>
-function myFunctionn() {
-    document.getElementById("form").reset();
+
+function resett() {
+   document.getElementById("form").reset();
 }
 </script>
-	  
-
-
-
-<script>
-function setlabel(){
-
-document.getElementById("lblName").value = "Date";
-
-}
-
-
-
-
-
-</script>
-
-
-
-
 
 
 <script>
 
- function ChangeLabel(obj) {
-          lblText.innerHTML = obj.value;
-      }
 
-	   </script> 
+
+
+
+function change()
+{
+   var inputval=document.getElementById("user_input");
+  var todaydate = new Date();
+  var year = todaydate.getFullYear();
   
-	  
+  function leapYear(year)
+{
+  if((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)
+  {
+  inputval.style.backgroundColor="yellow";
+  }
+
+
+
+else
+{
+inputval.style.backgroundColor="";
+
+
+}
+}
+}
+change();
+</script>
+
+
+
+<script>
+function myFunction1() {
+    var d = new Date();
+    var n = d.getDate();
+    if(n%2==0){
+	
+	document.getElementById("shape").innerHTML = n;
+	}
+	
+}
+
+</script>
+
+
+
+
+<script>
+function myFunction2() {
+    var d = new Date();
+    var n = d.getDate();
+    if(n%2!=0){
+	
+	document.getElementById("shape1").innerHTML = n;
+	}
+	
+}
+
+</script>
+
+
+
+
+
