@@ -77,20 +77,21 @@
 
 
  
- <form method="POST" id="myForm" name="myForm" onsubmit="return checkDate(this);">
+ <form  method="POST" id="form" name="form" onsubmit="return checkDate(this);">
 
 
- 
  <span>Enter the date:</span><br/>
 
-  <input id="aa" type="text" name="date" placeholder="dd/mm/yyyy" onchange="ChangeLabel(this);">
+  <input  type="text" name="date" placeholder="dd/mm/yyyy" onchange="ChangeLabel(this);">
+
 
 
   
   <br/><input type="submit" value="Validate">
-   </form>
+
    
    
+<tr><td><button class="button" onclick="getDate(this);">ADD</button></td></tr>
 
 
  
@@ -98,15 +99,14 @@
  
   <tr><td><button class="button" >	Sort by date</button></td></tr>
   
-    <tr><td><button class="button" onclick="getDate(this);">ADD</button></td></tr>
-
-  
+    
+     </form>
 
   
   
      
   
- <tr><td <button onclick="asc()">Date asc</button></tr></td>
+ <tr><td> <button onclick="asc()">Date asc</button></tr></td>
 <tr><td><button onclick="desc()">Date Dsc</button></tr></td>
 
   
@@ -176,14 +176,11 @@ document.getElementById("frmDate").onload = getDate();
 <script>
 
 
-if (new Date().getDate() < 31) {
-    document.getElementById("myForm").innerHTML = #dot;
-}
 
 
 
 
- function checkDate(myForm)
+ function checkDate(form)
 
   {
 
@@ -193,9 +190,9 @@ if (new Date().getDate() < 31) {
 
     
 
-    if(myForm.date.value != '') { 
+    if(form.date.value != '') { 
 
-      if(regs = myForm.date.value.match(re)) {  
+      if(regs = form.date.value.match(re)) {  
 
        
 
@@ -203,7 +200,7 @@ if (new Date().getDate() < 31) {
 
           alert("Invalid value for day: " + regs[1]); 
 
-          myForm.date.focus(); 
+          form.date.focus(); 
           return false;
 
         }
@@ -213,7 +210,7 @@ if (new Date().getDate() < 31) {
 
           alert("Invalid value for month: " + regs[2]);
 
-          myForm.date.focus();
+          form.date.focus();
 
           return false;
 
@@ -225,7 +222,7 @@ if (new Date().getDate() < 31) {
 
           alert("Invalid value for year: " + regs[3] + " - must be between 1 and " + (new Date()).getFullYear());
 
-          myForm.date.focus();
+          form.date.focus();
 
           return false;
 
@@ -235,7 +232,7 @@ if (new Date().getDate() < 31) {
 
         alert("You entered a string.");
 
-       myForm.date.focus();
+       form.date.focus();
 
         return false;
 
@@ -247,7 +244,7 @@ if (new Date().getDate() < 31) {
 
         alert("No input was given!");
 
-        myForm.date.focus();
+        form.date.focus();
 
         return false;
 
@@ -267,26 +264,17 @@ function oddNum(number) {
 
 
 
-/*
-function asc() 
-    {
-        record.sort(function(a,b){
-        return new Date(a.date).getTime() - new Date(b.date).getTime() 
-        });
-        for (var i = 0; i < record.length; i++) 
-        {
-            document.write(record[i].date);
-            document.write("<br>");
-        }
-    }
 
-
-	*/
-	
 	
 	
 </script>
 
+<script>
+function myFunctionn() {
+    document.getElementById("form").reset();
+}
+</script>
+	  
 
 
 
@@ -304,13 +292,6 @@ document.getElementById("lblName").value = "Date";
 </script>
 
 
-
-<script>
-function myFunctionn() {
-    document.getElementById("myForm").reset();
-}
-</script>
-	  
 
 
 
