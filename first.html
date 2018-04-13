@@ -62,6 +62,13 @@
 	float: right;
 } 
 
+#demo{
+
+width: 15px;
+	height: 32px;
+
+}
+
 </style>
 <body>
 <form  method="POST" action=""id="form" name="form" onsubmit="return checkDate(this);">
@@ -71,13 +78,13 @@
    </form>
  <div id="add"><button class="button"  value="add"   onchange="toDate()"  onclick="myFunction();myFunction2();"/>ADD</button></div>
    <div id="res"><button class="button" id="reset" onclick="resett();">RESET</button></div>
-    <div id="sort"><button class="button">SORT BY DATE</button></div>
-  
+    <div id="sort"><button class="button" onclick="sortt()">SORT BY DATE</button></div>
+  <p id="demo"></p>
   
   <p><span id='display'></span></p>
  <div id="numbers"> </div>
  <div id="asc"><tr><td><button class="button" onclick="asc();" >ASC</button></td></tr></div>
- 
+
  
 <center>
 
@@ -258,7 +265,7 @@ function resett() {
 
 
 function myFunction2() {
-  
+  /*
   var inputval=document.getElementById("user_input").value;
     var res = inputval.split("/");
    
@@ -272,16 +279,57 @@ function myFunction2() {
 	document.getElementById("shape").innerHTML = res[0];
 	}
 	
+// for (var i=0;i<s.length;i++)
  
  
+ var inpu=document.getElementById("user_input");
+var res=inpu.split("/");
+//document.getElementById("user_input").innerHTML = a[0];
+var s=new Array(res[0]);
+for (var i=0;i<s.length;i++){
+    if(res[i]%2!=0)
+	{
+     document.getElementById("shape1").innerHTML = res[0];
  
+     }
+    else{
+         document.getElementById("shape").innerHTML = res[0];
+       }
+   }
+   
+   
+   
+   
+ 
+   
+   
+   */
+   
+   var inputval=document.getElementById("user_input").value;
+    var res = inputval.split("/");
+   	var s=new Array(res[0]);
+	for(var i=0;i<=s.length;i++){
+
+   if(res[i]%2!=0){
+	 var foo = res.join("/");
+	document.getElementById("shape1").innerHTML =foo;
+	}
+	else{
+	 var foo = res.join("/");
+	document.getElementById("shape").innerHTML =foo;
+	}
+	  
+	
+}
+
+
 }
 </script>
 
 
 
 <script>
-
+/*
 function asc(){
 
 	
@@ -290,7 +338,7 @@ function asc(){
 var inpu=document.getElementById("user_input");
 var a=inpu.split("/");
 var dates=new Date(a[2],a[1]-1,a[0]);
-if(a[0])
+
 
 var date_sort_asc = function (date1, date2) {
   
@@ -311,6 +359,27 @@ for (var i = 0; i < dates.length; i++) {
   document.getElementById("shape").innerHTML = a[0];
 }
 
+
+
+
+
 }
+*/	
+var inpu=document.getElementById("user_input");
+var a=inpu.split("/");
+//document.getElementById("user_input").innerHTML = a[0];
+var s=new Array(a[0]);
+for (var i=0;i<s.length;i++){
+if(a[i]>=1 && a[i]<=31){
+document.getElementById("").innerHTML = res[0];
+ /*
+function sortt() {
+    s.sort(function(a, b){return a - b});
+    document.getElementById("demo").innerHTML = inpu;
+}*/
+}
+}
+
+
 
 </script>
