@@ -28,12 +28,20 @@
 
 #sort{
    
-
+ background-color:#4CAF50;
     overflow: hidden;
-	 float: ;
+	 float: ;bottom;
 
 }
 
+
+#asc{
+   
+
+    overflow: hidden;
+	 float: ;bottom;
+
+}
 
 
 #shape  {
@@ -56,19 +64,19 @@
 
 </style>
 <body>
-<form id="form" method="POST" action="" onsubmit="return checkDate(this);">
+<form  method="POST" action=""id="form" name="form" onsubmit="return checkDate(this);">
     <label><h2>Enter the Date:</h2></label>
     <input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
-<input type="submit" value="Validate" id="form">
+<input type="submit" value="Validate">
    </form>
- <button class="button"  value="add"   onfocus="change()"  onclick="myFunction1();myFunction2();myFunction();"/>ADD</button>
-   <div id="res"><tr><td><button class="button" id="reset" onclick="resett();">RESET</button></td></tr></div>
-    <div id="sort"><tr><td><button class="button" id="sort">SORT BY DATE</button></td></tr></div>
+ <button class="button"  value="add"   onchange="toDate()" onclick="myFunction();myFunction1();myFunction2();"/>ADD</button>
+   <div id="res"><button class="button" id="reset" onclick="resett();">RESET</button></div>
+    <div id="sort"><button class="button">SORT BY DATE</button></div>
   
   
   <p><span id='display'></span></p>
  <div id="numbers"> </div>
-
+ <div id="asc"><tr><td><button class="button" onclick="asc();" >ASC</button></td></tr></div>
  
  
 <center>
@@ -256,11 +264,15 @@ change();
 
 <script>
 function myFunction1() {
-    var d = new Date();
-    var n = d.getDate();
-    if(n%2==0){
-	
-	document.getElementById("shape").innerHTML = n;
+   var inpu=document.getElementById("user_input");
+    //var n = d.getDate();
+   var a=inpu.split("/");
+var  year=a[2];
+var month=a[1].slice(0,-1);
+var day=a[0];
+   if(day%2==0){
+	alert(day);
+	//document.getElementById("shape").innerHTML = inpu;
 	}
 	
 }
@@ -272,11 +284,18 @@ function myFunction1() {
 
 <script>
 function myFunction2() {
-    var d = new Date();
-    var n = d.getDate();
-    if(n%2!=0){
-	
-	document.getElementById("shape1").innerHTML = n;
+    //var d = new Date();
+   // var n = d.getDate();
+    var inpu=document.getElementById("user_input");
+    var a=inpu.split("/");
+//var d=new Array(a[2],a[1]-1,a[0]);
+var  year=a[2];
+var month=a[1].slice(0,-1);
+var day=a[0];
+   
+    if(day%2!=0){
+	alert(day);
+	//document.getElementById("shape1").innerHTML = n;
 	}
 	
 }
@@ -284,6 +303,63 @@ function myFunction2() {
 </script>
 
 
+<script>
+function toDate(user_input) {
+  var inputval=document.getElementById("user_input");
+  // var parts = user_input.split("/");
+     //var parts = user_input.split("/");
+	 
+	 //var year=parts [2];
+	  // const [day, month, year] = user_input.split("-")
+   //var f= new Date(year, month - 1, day)
+    
+	//var
+	var parts=inputval.value.split("/");
+	
+	
+   
+   if(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+  {
+document.getElementById("user_input").style.color="yellow";
+  }
 
 
 
+else
+{
+document.getElementById("user_input").style.color="green";
+
+}
+   
+   
+   
+</script>
+
+<script>
+
+function asc(){
+var inpu=document.getElementById("user_input");
+var a=inpu.split("/");
+var dates=new Date(a[2],a[1]-1,a[0]);
+
+
+var date_sort_asc = function (date1, date2) {
+  
+  if (date1 > date2) return 1;
+  if (date1 < date2) return -1;
+  return 0;
+};
+
+
+
+dates.sort(date_sort_asc);
+
+
+document.write('<p>Dates sorted in ascending order (oldest to newest):</p>');
+for (var i = 0; i < dates.length; i++) {
+  document.write(i + ': ' + dates[i] + '<br>');
+}
+
+}
+
+</script>
