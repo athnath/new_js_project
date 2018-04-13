@@ -69,7 +69,7 @@
     <input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
 <input type="submit" value="Validate">
    </form>
- <div id="add"><button class="button"  value="add"   onchange="toDate()" onclick="myFunction();myFunction1();myFunction2();"/>ADD</button></div>
+ <div id="add"><button class="button"  value="add"   onchange="toDate()"  onclick="myFunction();myFunction2();"/>ADD</button></div>
    <div id="res"><button class="button" id="reset" onclick="resett();">RESET</button></div>
     <div id="sort"><button class="button">SORT BY DATE</button></div>
   
@@ -81,7 +81,7 @@
  
 <center>
 
-<div id="shape"  class="circle" onload="myFunction1();"></div>
+<div id="shape"  class="circle" onload="myFunction2();"></div>
 
 <div id="shape1" class="triangle-up" onload="myFunction2();"></div>
 
@@ -201,22 +201,40 @@ function showInput() {
 
 <script>
 function myFunction() {
-  /*  var todaydate = new Date();
-var day = todaydate.getDate();
-var month = todaydate.getMonth() + 1;
-var year = todaydate.getFullYear();
-var datestring = day + "/" + month + "/" + year;
-*/
+
 var w=document.getElementById("user_input").value;
+var t=w.split("/");
+
+
+
+if(((t[2] % 4 == 0) && (t[2] % 100 != 0)) || (t[2] % 400 == 0)){
 a=document.getElementById("user_input");
 	x = document.createElement("INPUT");
     x.setAttribute("type", "text");
 	x.setAttribute("value",w);
-   
-document.body.appendChild(x);
 
-   
 
+
+ var t=document.body.appendChild(x);
+t.style.backgroundColor="yellow";
+}
+  
+  
+  
+  else{
+  
+  a=document.getElementById("user_input");
+	x = document.createElement("INPUT");
+    x.setAttribute("type", "text");
+	x.setAttribute("value",w);
+
+
+
+ var t=document.body.appendChild(x);
+
+  t.style.backgroundColor="";
+  
+  }
 }
 </script>
 
@@ -228,168 +246,51 @@ function resett() {
 </script>
 
 
-<script>
 
 
 
 
-
-function change()
-{
-   var inputval=document.getElementById("user_input");
-  var todaydate = new Date();
-  var year = todaydate.getFullYear();
-  
-  function leapYear(year)
-{
-  if((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)
-  {
-  inputval.style.backgroundColor="yellow";
-  }
-
-
-
-else
-{
-inputval.style.backgroundColor="";
-
-
-}
-}
-}
-change();
-</script>
-
-
-
-<script>
-function myFunction1() {
-/*  
-  var inpu=document.getElementById("user_input");
-    //var n = d.getDate();
-   var a=inpu.split("/");
-   
-   var d=new Array[3];
-var  year=d[2];
-var month=d[1].slice(0,-1);
-var day=d[0];
-
- var day=a.getDate();
-   if(day%2==0){
-	//alert(day);
- document.getElementById("shape").innerHTML = day;
-
-	
-}
-	/*
-	
-	
-	   var d = new Date();
-   var n = d.getDate();
-   
-     
-   if(n%2==0){
-	//alert(day);
-	document.getElementById("shape").innerHTML = n;
-	}
-	*/
-	
-	
-	
-	var d = new Date();
-   var n = d.getDate();
-	
-	 if(n%2==0){
-	//alert(day);
-	document.getElementById("shape").innerHTML = n;
-	}
-	
-}
-
-</script>
 
 
 
 
 <script>
+
+
 function myFunction2() {
   
-/*
- //var d = new Date();
-  // var n = d.getDate();
-    var inpu=document.getElementById("user_input");
-   var a=inpu.split("/");
-//var d=new Array(a[2],a[1]-1,a[0]);
- //var d=new Array[3];
-
-
-//var  year=d[2];
-//var month=d[1].slice(0,-1);
-//var day=d[0];
-
- var day=a.getDate();
+  var inputval=document.getElementById("user_input").value;
+    var res = inputval.split("/");
    
-   if(day%2!=0){
-	//alert(day);
-	document.getElementById("shape1").innerHTML = day;
+	
+	
+	
+	if(res[0]%2!=0){
+	document.getElementById("shape1").innerHTML = res[0];
 	}
-	*/
-	
-	
-	var d = new Date();
-   var n = d.getDate();
-	
-	 if(n%2!=0){
-	//alert(day);
-	document.getElementById("shape1").innerHTML = n;
+	else{
+	document.getElementById("shape").innerHTML = res[0];
 	}
 	
-	
-	
-
+ 
+ 
+ 
 }
 </script>
 
 
-<script>
-function toDate(user_input) {
-  var inputval=document.getElementById("user_input");
-  // var parts = user_input.split("/");
-     //var parts = user_input.split("/");
-	 
-	 //var year=parts [2];
-	  // const [day, month, year] = user_input.split("-")
-   //var f= new Date(year, month - 1, day)
-    
-	//var
-	var parts=inputval.value.split("/");
-	
-	
-   
-   if(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
-  {
-document.getElementById("user_input").style.color="yellow";
-  }
-
-
-
-else
-{
-document.getElementById("user_input").style.color="green";
-
-}
-   
-   
-   
-</script>
 
 <script>
 
 function asc(){
+
+	
+	
+	
 var inpu=document.getElementById("user_input");
 var a=inpu.split("/");
 var dates=new Date(a[2],a[1]-1,a[0]);
-
+if(a[0])
 
 var date_sort_asc = function (date1, date2) {
   
@@ -403,9 +304,11 @@ var date_sort_asc = function (date1, date2) {
 dates.sort(date_sort_asc);
 
 
-document.write('<p>Dates sorted in ascending order (oldest to newest):</p>');
+
 for (var i = 0; i < dates.length; i++) {
-  document.write(i + ': ' + dates[i] + '<br>');
+  //document.write(i + ': ' + dates[i] + '<br>');
+  
+  document.getElementById("shape").innerHTML = a[0];
 }
 
 }
