@@ -69,7 +69,7 @@
     <input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
 <input type="submit" value="Validate">
    </form>
- <button class="button"  value="add"   onchange="toDate()" onclick="myFunction();myFunction1();myFunction2();"/>ADD</button>
+ <div id="add"><button class="button"  value="add"   onchange="toDate()" onclick="myFunction();myFunction1();myFunction2();"/>ADD</button></div>
    <div id="res"><button class="button" id="reset" onclick="resett();">RESET</button></div>
     <div id="sort"><button class="button">SORT BY DATE</button></div>
   
@@ -264,15 +264,44 @@ change();
 
 <script>
 function myFunction1() {
-   var inpu=document.getElementById("user_input");
+/*  
+  var inpu=document.getElementById("user_input");
     //var n = d.getDate();
    var a=inpu.split("/");
-var  year=a[2];
-var month=a[1].slice(0,-1);
-var day=a[0];
+   
+   var d=new Array[3];
+var  year=d[2];
+var month=d[1].slice(0,-1);
+var day=d[0];
+
+ var day=a.getDate();
    if(day%2==0){
-	alert(day);
-	//document.getElementById("shape").innerHTML = inpu;
+	//alert(day);
+ document.getElementById("shape").innerHTML = day;
+
+	
+}
+	/*
+	
+	
+	   var d = new Date();
+   var n = d.getDate();
+   
+     
+   if(n%2==0){
+	//alert(day);
+	document.getElementById("shape").innerHTML = n;
+	}
+	*/
+	
+	
+	
+	var d = new Date();
+   var n = d.getDate();
+	
+	 if(n%2==0){
+	//alert(day);
+	document.getElementById("shape").innerHTML = n;
 	}
 	
 }
@@ -284,22 +313,41 @@ var day=a[0];
 
 <script>
 function myFunction2() {
-    //var d = new Date();
-   // var n = d.getDate();
+  
+/*
+ //var d = new Date();
+  // var n = d.getDate();
     var inpu=document.getElementById("user_input");
-    var a=inpu.split("/");
+   var a=inpu.split("/");
 //var d=new Array(a[2],a[1]-1,a[0]);
-var  year=a[2];
-var month=a[1].slice(0,-1);
-var day=a[0];
+ //var d=new Array[3];
+
+
+//var  year=d[2];
+//var month=d[1].slice(0,-1);
+//var day=d[0];
+
+ var day=a.getDate();
    
-    if(day%2!=0){
-	alert(day);
-	//document.getElementById("shape1").innerHTML = n;
+   if(day%2!=0){
+	//alert(day);
+	document.getElementById("shape1").innerHTML = day;
+	}
+	*/
+	
+	
+	var d = new Date();
+   var n = d.getDate();
+	
+	 if(n%2!=0){
+	//alert(day);
+	document.getElementById("shape1").innerHTML = n;
 	}
 	
-}
+	
+	
 
+}
 </script>
 
 
