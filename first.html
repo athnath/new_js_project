@@ -5,10 +5,16 @@
 
 <style>
 
+body{
+    
+	background-color:#FFFACD;
+
+}
 
 
 .button {
-    background-color:#B22222;
+    
+	background-color:#000000;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -19,80 +25,136 @@
 }
 
 
+.caption{
+
+    height:50px;
+    width: 200px;
+	background-color: #EEE;
+    border-color: #B4B4B4;
+	margin: 20px 0;
+    padding: 20px;
+	border-left: 3px solid green;
+}
+
+	
+.caption:hover {
+   
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+	
+
 #res{
     
     overflow: hidden;
-	 float: right;
+	float: right;
 	
 }
 
+
 #sort{
    
- background-color:#4CAF50;
+    background-color:#4CAF50;
     overflow: hidden;
-	 float: ;bottom;
+	float: ;bottom;
 
 }
 
 
 #asc{
    
-
     overflow: hidden;
-	 float: ;bottom;
+	float:left;
 
+}
+
+
+#dsc{
+   
+    overflow: hidden;
+	float:right;
+
+}
+
+
+
+h2{
+
+    color: maroon;
 }
 
 
 #shape  {
-  height:200px;
-  width: 200px;
-  background-color: lightblue;
-  border-radius: 50%;
-  float: right;
+   
+    height:230px;
+    width: 230px;
+    background-color: #BC8F8F;
+    border-radius: 60%;
+    float: right;
   
 }
 
+
 #shape1 {
+	
 	width: 0;
 	height: 0;
 	border-left: 200px solid transparent ;
 	border-right: 200px solid transparent;
-	border-bottom: 150px solid powderblue;
+	border-bottom: 150px solid #BC8F8F;
 	float: right;
 } 
 
+
 #demo{
 
-width: 15px;
+    width: 15px;
 	height: 32px;
 
 }
 
 </style>
-<body>
-<form  method="POST" action=""id="form" name="form" onsubmit="return checkDate(this);">
-    <label><h2>Enter the Date:</h2></label>
-    <input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
-<input type="submit" value="Validate">
-   </form>
- <div id="add"><button class="button"  value="add"   onchange="toDate()"  onclick="myFunction();myFunction2();"/>ADD</button></div>
-   <div id="res"><button class="button" id="reset" onclick="resett();">RESET</button></div>
-    <div id="sort"><button class="button" onclick="sortt()">SORT BY DATE</button></div>
-  <p id="demo"></p>
-  
-  <p><span id='display'></span></p>
- <div id="numbers"> </div>
- <div id="asc"><tr><td><button class="button" onclick="asc();" >ASC</button></td></tr></div>
 
+
+
+<body>
+
+<form  method="POST" action="" id="form1" name="form1" onsubmit="return checkDate(this);">
+    
+<label><h2>Enter the Date:</h2></label>
+<input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
+<input type="submit" value="Validate">
+
+</form>
+  
+<div id="add"><button class="button"  value="add"   onchange="toDate()"  onclick="myFunction();myFunction2();"/>ADD</button></div>
+<div id="res"><button class="button" id="reset" onclick="resett();">RESET</button></div>
+<div id="sort"><button class="button" onclick="sortt()">SORT BY DATE</button></div>
+
+  
+
+          
+        
+<p><span id='display'></span></p><div id="numbers"> </div>
  
-<center>
+ 
+ <fieldset>
+
+
+<legend>Date Categorizer</legend>
 
 <div id="shape"  class="circle" onload="myFunction2();"></div>
 
 <div id="shape1" class="triangle-up" onload="myFunction2();"></div>
 
-</center>
+<div id="ta" ><textarea rows="10" cols="50" onload="asc();"></textarea></div>
+<div id="asc"><tr><td><button class="button" onclick="asc();"/ >ASC</button></td></tr><tr>
+
+<td>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</td>
+
+</tr></div>
+
+<div id="des" ><tr><button class="button" onclick="dsc();" >DESC</button></tr></div>
+</fieldset>
  
  
 </head>
@@ -101,14 +163,8 @@ width: 15px;
 </html>
 
 
-
-
-
 <script>
-
-
-
- function checkDate(form)
+ function checkDate(form1)
 
   {
      document.getElementById("user_input").value;
@@ -118,9 +174,9 @@ width: 15px;
 
     
 
-    if(form.date.value != '') { 
+    if(form1.date.value != '') { 
 
-      if(regs = form.date.value.match(re)) {  
+      if(regs = form1.date.value.match(re)) {  
 
        
 
@@ -128,7 +184,7 @@ width: 15px;
 
           alert("Invalid value for day: " + regs[1]); 
 
-          form.date.focus(); 
+          form1.date.focus(); 
           return false;
 
         }
@@ -138,7 +194,7 @@ width: 15px;
 
           alert("Invalid value for month: " + regs[2]);
 
-          form.date.focus();
+          form1.date.focus();
 
           return false;
 
@@ -150,17 +206,17 @@ width: 15px;
 
           alert("Invalid value for year: " + regs[3] + " - must be between 1 and " + (new Date()).getFullYear());
 
-          form.date.focus();
+          form1.date.focus();
 
           return false;
 
         }
 
-      } else if(isNaN(form.date.value)) {   
+      } else if(isNaN(form1.date.value)) {   
 
         alert("You entered a string.");
 
-       form.date.focus();
+       form1.date.focus();
 
         return false;
 
@@ -172,7 +228,7 @@ width: 15px;
 
         alert("No input was given!");
 
-        form.date.focus();
+        form1.date.focus();
 
         return false;
 
@@ -182,12 +238,6 @@ width: 15px;
 
  
 }
-
-
-
-
-
-	
 	
 </script>
 
@@ -206,6 +256,7 @@ function showInput() {
 </script>
 
 
+
 <script>
 function myFunction() {
 
@@ -217,13 +268,16 @@ var t=w.split("/");
 if(((t[2] % 4 == 0) && (t[2] % 100 != 0)) || (t[2] % 400 == 0)){
 a=document.getElementById("user_input");
 	x = document.createElement("INPUT");
-    x.setAttribute("type", "text");
+   x.setAttribute("type", "text");
 	x.setAttribute("value",w);
+	//a.appendChild(x);
 
+	//document.getElementsByTagName("INPUT")[0].setAttribute("type", "user_input"); 
 
-
+ //<input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
  var t=document.body.appendChild(x);
 t.style.backgroundColor="yellow";
+
 }
   
   
@@ -242,27 +296,21 @@ t.style.backgroundColor="yellow";
   t.style.backgroundColor="";
   
   }
+   
 }
 </script>
 
-<script>
 
+<script>
 function resett() {
-   document.getElementById("form").reset();
+   document.getElementById("form1").reset();
 }
 </script>
 
 
-
-
-
-
-
-
-
-
 <script>
-
+  var stack=new Array();
+  //var dates=new Arr();
 
 function myFunction2() {
   /*
@@ -278,6 +326,8 @@ function myFunction2() {
 	else{
 	document.getElementById("shape").innerHTML = res[0];
 	}
+	
+	
 	
 // for (var i=0;i<s.length;i++)
  
@@ -299,28 +349,96 @@ for (var i=0;i<s.length;i++){
    
    
    
-   
+   */
  
    
+   /*
    
-   */
-   
+   var stack=new Array();
    var inputval=document.getElementById("user_input").value;
     var res = inputval.split("/");
-   	var s=new Array(res[0]);
-	for(var i=0;i<=s.length;i++){
+   
+	// document.getElementById("shape1").innerHTML =foo;
+	
+	
 
-   if(res[i]%2!=0){
-	 var foo = res.join("/");
-	document.getElementById("shape1").innerHTML =foo;
+for (var i=0;i<stack.length;i++){
+ var foo=stack.push(res[0]);
+//document.getElementById("shape1").innerHTML =foo;
+
+
+//var foo = res.join("/");
+   if(stack[i]%2!=0){
+	 
+	
+	document.getElementById("shape1").innerHTML =stack[i];
+	
 	}
 	else{
-	 var foo = res.join("/");
-	document.getElementById("shape").innerHTML =foo;
+	
+	document.getElementById("shape").innerHTML =stack[i];
 	}
 	  
+	}
+
+*/
+
+//var inputval="";
+//var res="";
+
+
+  var inputval=document.getElementById("user_input").value;
+ var res = inputval.split("/");
+ 
+   
+  
+  
+  var year=res[2];
+  var month=res[1];
+  var day=res[0];
+//var datestring ="";
+//var datestringg="";
+ var pval="";
+ var pval1="";
+ var en="";
+ 
+ //var inputval2="";
+ 
+ //var f="";
+//var f1="";
+ stack.push(res[0]);
+  for(i=0;i<stack.length;i++)
+  {
+    
+	 
+  if(stack[i]%2==0){
+	 
+	 pval=pval+stack[i]+"</br>";
+	 
+	 
+	  //f = res.join("/")+
+	   // datestring=day + "/" + month + "/" + year;
+	  
+	   
+	 //f=[day,month,year].join("/");
+	   //en= res.join("/")+"</br>";
+	document.getElementById("shape").innerHTML =pval;
 	
-}
+	
+	}
+	else{
+	pval1=pval1+stack[i]+"</br>";
+	   //f1 = res.join("/")+"</br>";
+	    //datestringg=day + "/" + month + "/" + year;
+		// var dates=new Date(res[2],res[1]-1,res[0]);
+		 //f=[day,month,year].join("/");
+		  // var en2= res.join("/");
+	document.getElementById("shape1").innerHTML =pval1;
+	//document.getElementById("shape1").innerHTML =en2;
+	}
+	 
+  
+  }
 
 
 }
@@ -329,11 +447,10 @@ for (var i=0;i<s.length;i++){
 
 
 <script>
-/*
 function asc(){
 
 	
-	
+	/*
 	
 var inpu=document.getElementById("user_input");
 var a=inpu.split("/");
@@ -356,7 +473,7 @@ dates.sort(date_sort_asc);
 for (var i = 0; i < dates.length; i++) {
   //document.write(i + ': ' + dates[i] + '<br>');
   
-  document.getElementById("shape").innerHTML = a[0];
+  document.getElementById("ta").innerHTML = dates;
 }
 
 
@@ -364,7 +481,7 @@ for (var i = 0; i < dates.length; i++) {
 
 
 }
-*/	
+/*	
 var inpu=document.getElementById("user_input");
 var a=inpu.split("/");
 //document.getElementById("user_input").innerHTML = a[0];
@@ -372,14 +489,41 @@ var s=new Array(a[0]);
 for (var i=0;i<s.length;i++){
 if(a[i]>=1 && a[i]<=31){
 document.getElementById("").innerHTML = res[0];
- /*
+ 
 function sortt() {
     s.sort(function(a, b){return a - b});
     document.getElementById("demo").innerHTML = inpu;
-}*/
 }
 }
 
 
+
+}
+   */
+
+    
+   
+   
+   
+   var inpu=document.getElementById("user_input");
+   
+   var arr=new Array();
+   for(var i=0;i<arr.length;i++)
+   {
+       arr[i]=arr.push(inputval);
+   
+   
+   }
+   
+   
+   
+   
+   
 
 </script>
+
+
+
+
+
+
