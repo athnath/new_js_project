@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+</head>
 <style>
 
 body{
@@ -25,23 +25,6 @@ body{
 }
 
 
-.caption{
-
-    height:50px;
-    width: 200px;
-	background-color: #EEE;
-    border-color: #B4B4B4;
-	margin: 20px 0;
-    padding: 20px;
-	border-left: 3px solid green;
-}
-
-	
-.caption:hover {
-   
-   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-	
 
 #res{
     
@@ -112,27 +95,93 @@ h2{
 
 }
 
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color:#0000FF;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.parent{
+
+
+overflow:auto;
+margin-top:50px;
+
+}
+
+.child{
+
+width:200px;
+height:150px;
+float:left;
+margin-left:20px;
+border:1px solid #000;
+text-align:center;
+line-height:150px;
+cursor:pointer;
+background-color:#ddd;
+
+
+}
+
+.bak {
+
+background-color:red color:#fff; font-weight:bold;
+
+}
+     
+	 
+	 
+	 #card {
+    border: 1px solid lightblue;
+    width: 10em;
+    height: 11em;
+    margin-bottom: 25px;
+    /* display: inline-block; */
+    margin: .5em;
+    display: inline-flex;
+    flex-direction: column;
+}
+#card h3 {
+    text-align: center;
+    word-wrap: break-word;
+    border-bottom: 2px solid;
+    color: coral;
+    font-family: fantasy;
+}
+#card button {
+    background: aliceblue;
+    margin-top: auto;
+}
+
 </style>
 
 
 
 <body>
+   
 
-<form  method="POST" action="" id="form1" name="form1" onsubmit="return checkDate(this);">
-    
+ 
 <label><h2>Enter the Date:</h2></label>
-<input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
+<input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy" >
+
 <input type="submit" value="Validate">
 
-</form>
+ 
+
   
-<div id="add"><button class="button"  value="add"   onchange="toDate()"  onclick="myFunction();myFunction2();"/>ADD</button></div>
+<div id="add"><button class="button"  value="add"   onchange="toDate();" onclick="myFunction2()"  />ADD</button></div>
+
+
+ <div id="cards">
+    </div>
+
 <div id="res"><button class="button" id="reset" onclick="resett();">RESET</button></div>
 <div id="sort"><button class="button" onclick="sortt()">SORT BY DATE</button></div>
 
-  
 
-          
         
 <p><span id='display'></span></p><div id="numbers"> </div>
  
@@ -157,14 +206,21 @@ h2{
 </fieldset>
  
  
-</head>
+
+
+              
+	
+
+          
 
 </body>
 </html>
 
 
 <script>
- function checkDate(form1)
+
+document.getElementById("myForm").addEventListener("submit", checkDate);
+ function checkDate()
 
   {
      document.getElementById("user_input").value;
@@ -257,53 +313,11 @@ function showInput() {
 
 
 
-<script>
-function myFunction() {
-
-var w=document.getElementById("user_input").value;
-var t=w.split("/");
-
-
-
-if(((t[2] % 4 == 0) && (t[2] % 100 != 0)) || (t[2] % 400 == 0)){
-a=document.getElementById("user_input");
-	x = document.createElement("INPUT");
-   x.setAttribute("type", "text");
-	x.setAttribute("value",w);
-	//a.appendChild(x);
-
-	//document.getElementsByTagName("INPUT")[0].setAttribute("type", "user_input"); 
-
- //<input type="text" name="date" id="user_input" placeholder="dd/mm/yyyy">
- var t=document.body.appendChild(x);
-t.style.backgroundColor="yellow";
-
-}
-  
-  
-  
-  else{
-  
-  a=document.getElementById("user_input");
-	x = document.createElement("INPUT");
-    x.setAttribute("type", "text");
-	x.setAttribute("value",w);
-
-
-
- var t=document.body.appendChild(x);
-
-  t.style.backgroundColor="";
-  
-  }
-   
-}
-</script>
 
 
 <script>
 function resett() {
-   document.getElementById("form1").reset();
+   document.getElementById("myForm").reset();
 }
 </script>
 
@@ -312,100 +326,32 @@ function resett() {
   var stack=new Array();
   //var dates=new Arr();
 
+ // var datestring =new Arr(day,month,year);
+  
 function myFunction2() {
-  /*
-  var inputval=document.getElementById("user_input").value;
-    var res = inputval.split("/");
-   
-	
-	
-	
-	if(res[0]%2!=0){
-	document.getElementById("shape1").innerHTML = res[0];
-	}
-	else{
-	document.getElementById("shape").innerHTML = res[0];
-	}
-	
-	
-	
-// for (var i=0;i<s.length;i++)
+  
+
  
+
  
- var inpu=document.getElementById("user_input");
-var res=inpu.split("/");
-//document.getElementById("user_input").innerHTML = a[0];
-var s=new Array(res[0]);
-for (var i=0;i<s.length;i++){
-    if(res[i]%2!=0)
-	{
-     document.getElementById("shape1").innerHTML = res[0];
- 
-     }
-    else{
-         document.getElementById("shape").innerHTML = res[0];
-       }
-   }
-   
-   
-   
-   */
- 
-   
-   /*
-   
-   var stack=new Array();
-   var inputval=document.getElementById("user_input").value;
-    var res = inputval.split("/");
-   
-	// document.getElementById("shape1").innerHTML =foo;
-	
-	
-
-for (var i=0;i<stack.length;i++){
- var foo=stack.push(res[0]);
-//document.getElementById("shape1").innerHTML =foo;
-
-
-//var foo = res.join("/");
-   if(stack[i]%2!=0){
-	 
-	
-	document.getElementById("shape1").innerHTML =stack[i];
-	
-	}
-	else{
-	
-	document.getElementById("shape").innerHTML =stack[i];
-	}
-	  
-	}
-
-*/
-
-//var inputval="";
-//var res="";
+ //var f="";
+//var f1="";
 
 
   var inputval=document.getElementById("user_input").value;
  var res = inputval.split("/");
- 
-   
-  
-  
   var year=res[2];
   var month=res[1];
   var day=res[0];
+
+  
+  
 //var datestring ="";
 //var datestringg="";
  var pval="";
  var pval1="";
- var en="";
- 
- //var inputval2="";
- 
- //var f="";
-//var f1="";
+
+
  stack.push(res[0]);
   for(i=0;i<stack.length;i++)
   {
@@ -413,15 +359,18 @@ for (var i=0;i<stack.length;i++){
 	 
   if(stack[i]%2==0){
 	 
-	 pval=pval+stack[i]+"</br>";
+	 pval=pval+stack[i];
 	 
+	
 	 
-	  //f = res.join("/")+
+	  //f = x.join("/");
 	   // datestring=day + "/" + month + "/" + year;
-	  
-	   
+	 
 	 //f=[day,month,year].join("/");
-	   //en= res.join("/")+"</br>";
+	 
+	 //f=[pval,res[1]-1,res[2]].join("/")+"</br>";
+	 
+	  
 	document.getElementById("shape").innerHTML =pval;
 	
 	
@@ -433,8 +382,11 @@ for (var i=0;i<stack.length;i++){
 		// var dates=new Date(res[2],res[1]-1,res[0]);
 		 //f=[day,month,year].join("/");
 		  // var en2= res.join("/");
+	 
+	
+	
+	  
 	document.getElementById("shape1").innerHTML =pval1;
-	//document.getElementById("shape1").innerHTML =en2;
 	}
 	 
   
@@ -450,7 +402,7 @@ for (var i=0;i<stack.length;i++){
 function asc(){
 
 	
-	/*
+	
 	
 var inpu=document.getElementById("user_input");
 var a=inpu.split("/");
@@ -501,7 +453,7 @@ function sortt() {
 }
    */
 
-    
+    /*
    
    
    
@@ -519,11 +471,64 @@ function sortt() {
    
    
    
-
+*/
 </script>
 
 
 
 
 
+<script>
 
+ 
+let cardArea = document.getElementById('cards');
+let input = document.getElementById('user_input');
+
+
+
+
+
+
+function addCard() {
+ 
+    let newButton = "<button id ='delete'>Delete</button>";
+    let newCard = "<article id ='card'><h3>"+input.value+"</h3>"+newButton+"</article>"
+
+    if(input.value == ""){
+        alert("Date is not added!!!");
+    } else {
+       
+
+	   cardArea.innerHTML += newCard;
+	   
+    }
+}
+
+
+let Btn = document.getElementById('add');
+
+
+
+Btn.addEventListener('click', addCard);
+
+
+
+
+cardArea.addEventListener('click', function(){
+    if (event.target.id === "delete"){
+        event.target.parentElement.parentElement.removeChild(event.target.parentElement);
+    }
+});
+
+
+//keycode=13=enter
+
+input.addEventListener('keyup', function(e){
+    if (e.keyCode === 13){
+        Btn.click();
+        input.value = "";
+    }
+});
+
+	   </script> 
+  
